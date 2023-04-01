@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="content-section">
+    <legend class="borter-bottom mb-4">
+        Join Today!
+    </legend>
+    <form method="POST" action="">
+        {{ obj.hidden_tag() }}
+
+        <fieldset class="form-group">
+            <div class="form-group">
+                {{obj.username.label(class="form-control-label")}}
+                {% if obj.username.errors %}
+                {{ asdasdasd }}
+                {{ obj.username(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for errors in obj.username.errors %}
+                    <span>
+                        {{ errors }}
+                    </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{obj.email(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{obj.email.label(class="form-control-label")}}
+                {% if obj.email.errors %}
+                {{ obj.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in obj.email.errors %}
+                    <span>
+                        {{ error }}
+                    </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{obj.email(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{obj.password.label(class="form-control-label")}}
+                {% if obj.password.errors %}
+                {{ obj.password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in obj.password.errors %}
+                    <span>
+                        {{ error }}
+                    </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{obj.password(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{obj.confirm_password.label(class="form-control-label")}}
+                {% if obj.confirm_password.errors %}
+                {{ obj.confirm_password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in obj.confirm_password.errors %}
+                    <span>
+                        {{ error }}
+                    </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{obj.confirm_password(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{obj.submit(class="btn btn-outline-info")}}
+        </div>
+    </form>
+</div>
+
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Already have an account? <a class="ml-2" href="{{url_for('login')}}">Sign in!</a>
+    </small>
+</div>
+
+{% endblock content %}
