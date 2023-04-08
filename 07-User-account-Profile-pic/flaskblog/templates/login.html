@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="content-section">
+    <form method="POST" action="">
+        {{ obj.hidden_tag() }}
+
+        <fieldset class="form-group">
+        <legend class="border-bottom mb-4">
+            Log in!
+        </legend>
+        <div class="form-group">
+            {{ obj.email.label(class="form-control-label") }}
+            {% if obj.email.errors %}
+                {{ obj.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in obj.email.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ obj.email(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+            <div class="form-group">
+                {{ obj.password.label(class="form-control-label") }}
+                {% if obj.password.errors %}
+                {{ obj.password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in obj.password.errors %}
+                    <span>
+                        {{ error }}
+                    </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ obj.password(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-check">
+                {{ obj.remember(class="form-check-input") }}
+                {{ obj.remember.label(class="form-check-label") }}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ obj.submit(class="btn btn-outline-info") }}
+        </div>
+        <small class="text-muted ml-2">
+            <a href="#">Forgot password?</a>
+        </small>
+    </form>
+</div>
+
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Need an account? <a class="ml-2" href="{{url_for('register')}}"> Sign up!</a>
+    </small>
+</div>
+
+{% endblock content %}
